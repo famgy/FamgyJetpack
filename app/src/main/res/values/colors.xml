@@ -6,4 +6,9 @@
 
     <color name="textPrimary">#4e5864</color>
     <color name="norm_grey">#eeeeee</color>
+
+    <color name="color_white">#ffffffff</color>
+    <color name="color_black">#ff15151a</color>
+    <color name="color_gray">#ffaaaabb</color>
+    <color name="color_blue_04e0e1">#ff04e0e1</color>
 </resources>

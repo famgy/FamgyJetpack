@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/main_fragment">
+
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="com.famgy.famgyjetpack.ui.fragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_main_to_login"
+            app:destination="@id/login_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.famgy.famgyjetpack.ui.fragment.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_registration"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/registration_graph" />
+        <action
+            android:id="@+id/action_login_to_main"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/main_fragment" />
+    </fragment>
+
+    <navigation
+        android:id="@+id/registration_graph"
+        app:startDestination="@id/profileFragment">
+
+        <fragment
+            android:id="@+id/profileFragment"
+            android:name="com.famgy.famgyjetpack.ui.fragment.ProfileFragment"
+            android:label="fragment_profile"
+            tools:layout="@layout/fragment_profile" >
+            <action
+                android:id="@+id/action_profile_to_credentials"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+                app:destination="@id/credentialsFragment" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/credentialsFragment"
+            android:name="com.famgy.famgyjetpack.ui.fragment.CredentialsFragment"
+            android:label="fragment_credentials"
+            tools:layout="@layout/fragment_credentials" />
+    </navigation>
+
+</navigation>

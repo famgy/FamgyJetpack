@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ScrollingBackgroundView">
+        <attr name="sbv_scrollX" format="dimension" />
+        <attr name="sbv_scrollY" format="dimension" />
+        <attr name="sbv_drawable" format="reference" />
+    </declare-styleable>
+</resources>
