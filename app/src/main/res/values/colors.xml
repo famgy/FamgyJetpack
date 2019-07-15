@@ -11,4 +11,6 @@
     <color name="color_black">#ff15151a</color>
     <color name="color_gray">#ffaaaabb</color>
     <color name="color_blue_04e0e1">#ff04e0e1</color>
+
+    <color name="transparent_black">#e5000000</color>
 </resources>

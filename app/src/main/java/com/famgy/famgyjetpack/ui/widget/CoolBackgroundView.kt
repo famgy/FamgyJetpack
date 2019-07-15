@@ -15,6 +15,9 @@ import com.famgy.famgyjetpack.R
 class CoolBackgroundView : View {
 
     private lateinit var drawable: Drawable
+    private  var c: Int = 0
+    private  var e: Int = 0
+    private  var f: Int = 0
 
     constructor(context: Context):super(context) {
     }
@@ -28,10 +31,12 @@ class CoolBackgroundView : View {
     }
 
     private fun initView(context: Context, attributeSet: AttributeSet) {
+        c = context.resources.displayMetrics.widthPixels
+
         var typedArray: TypedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ScrollingBackgroundView)
         try {
-            var e = typedArray.getDimensionPixelSize(R.styleable.ScrollingBackgroundView_sbv_scrollX, 0)
-            var f = typedArray.getDimensionPixelSize(R.styleable.ScrollingBackgroundView_sbv_scrollY, 0)
+            e = typedArray.getDimensionPixelSize(R.styleable.ScrollingBackgroundView_sbv_scrollX, 0)
+            f = typedArray.getDimensionPixelSize(R.styleable.ScrollingBackgroundView_sbv_scrollY, 0)
             drawable = typedArray.getDrawable(R.styleable.ScrollingBackgroundView_sbv_drawable)
 
             setDrawable();
@@ -41,12 +46,11 @@ class CoolBackgroundView : View {
     }
 
     private fun setDrawable() {
-        var x = 0
-        var y = 0
-        var width = context.resources.displayMetrics.widthPixels
-        var height = drawable.intrinsicHeight
+        var proportion = c.toFloat() / drawable.intrinsicWidth.toFloat()
+        var height = drawable.intrinsicHeight.toFloat()
+        var bottom: Int = (proportion * height).toInt()
 
-        drawable.setBounds(x, y, x + width, y + height)
+        drawable.setBounds(0, 0, c, bottom)
 
         setWillNotDraw(false)
         postInvalidateOnAnimation()
@@ -55,23 +59,58 @@ class CoolBackgroundView : View {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        drawable.draw(canvas)
+        //drawable.draw(canvas)
+
+        var scrollX = e
+        var scrollY = f
+        var width = canvas?.width as Int
+        var height = canvas?.height as Int
+        var stepLen = 2.0f
+
+        var rect = drawable.bounds
+
+        var drawableWidth = rect.width()
+        var drawableHeight = rect.height()
+
+        var startX = moveScroll(scrollX, drawableWidth)
+        var iterationsX = moveTotalScroll(width, startX, drawableWidth)
+
+        val startY = moveScroll(scrollY, drawableHeight)
+        val iterationsY = moveTotalScroll(height, startY, drawableHeight)
+
+        val save = canvas.save()
+
+        canvas.translate(startX.toFloat(), startY.toFloat())
+        for (x in 0..iterationsX) {
+            for (y in 0..iterationsY) {
+                drawable.draw(canvas)
+                canvas.translate(0.0f, drawableHeight.toFloat())
+            }
+            canvas.translate(drawableWidth.toFloat(), (-(drawableHeight * iterationsY)).toFloat())
+        }
+
+        canvas.restoreToCount(save);
+
+        f = (f.toFloat() + Math.abs(stepLen)).toInt()
+
+        postInvalidateOnAnimation();
     }
 
-    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        super.onSizeChanged(w, h, oldw, oldh)
+    private fun moveScroll(scroll: Int, side: Int): Int {
+        var modulo = Math.abs(scroll) % side
+        if (0 == modulo) {
+            return 0
+        }
 
-        resizeImage(resources, R.styleable.ScrollingBackgroundView_sbv_drawable, w, h)
+        if (scroll < 0) {
+            return -(side - modulo)
+        }
+
+        return -modulo
     }
 
-    private fun resizeImage(res: Resources, resId: Int, w: Int, h: Int) {
-        var option = BitmapFactory.Options()
-
-        option.inJustDecodeBounds = true
-        BitmapFactory.decodeResource(res, resId, option)
-        option.inSampleSize = Math.round(drawable.intrinsicWidth.toFloat() / w.toFloat())
-        option.inJustDecodeBounds = true
-
-        BitmapFactory.decodeResource(res, resId, option)
+    private fun moveTotalScroll(total: Int, start: Int, side: Int): Int {
+        var diff = total - start
+        return (if (diff % side > 0) 1 else 0) + diff / side
     }
 }

@@ -13,7 +13,7 @@
 
         <activity
             android:name=".ui.activity.GuestActivity"
-            android:theme="@style/Splash">
+            android:theme="@style/AppTheme.TransparentTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

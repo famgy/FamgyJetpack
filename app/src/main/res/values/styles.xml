@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppThemea" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -13,6 +13,21 @@
     <style name="Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="colorPrimary">@color/color_white</item>
+    </style>
+
+    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light.NoActionBar" />
+    <style name="AppTheme" parent="@style/AppBaseTheme">
+        <item name="colorPrimary">@color/color_white</item>
+        <item name="colorPrimaryDark">#80333333</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+    <style name="AppTheme.Top" parent="@style/AppTheme">
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+    <style name="AppTheme.TransparentTop" parent="@style/AppTheme.Top">
+        <item name="android:windowBackground">@color/transparent_black</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
 </resources>
