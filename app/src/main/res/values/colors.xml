@@ -9,8 +9,11 @@
 
     <color name="color_white">#ffffffff</color>
     <color name="color_black">#ff15151a</color>
+    <color name="color_blue">#ff00dbdb</color>
     <color name="color_gray">#ffaaaabb</color>
     <color name="color_blue_04e0e1">#ff04e0e1</color>
+    <color name="color_line">#ffebebf0</color>
 
+    <color name="transparent">#00000000</color>
     <color name="transparent_black">#e5000000</color>
 </resources>

@@ -12,8 +12,8 @@
         android:hardwareAccelerated="true" >
 
         <activity
-            android:name=".ui.activity.GuestActivity"
-            android:theme="@style/AppTheme.TransparentTop">
+            android:name=".ui.activity.SplashActivity"
+            android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.MainActivity" />
-        <activity android:name=".ui.activity.SplashActivity"></activity>
+        <activity android:name=".ui.activity.GuestActivity" />
     </application>
 
 </manifest>

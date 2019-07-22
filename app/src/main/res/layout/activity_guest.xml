@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     android:background="#ff21232b"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -24,38 +25,6 @@
         android:src="@mipmap/splash_0"
         android:layout_centerHorizontal="true" />
     <LinearLayout
-        android:gravity="center"
-        android:orientation="vertical"
-        android:id="@+id/ll_server"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40.0dip"
-        android:layout_centerHorizontal="true">
-        <TextView
-            android:textSize="16.0dip"
-            android:textStyle="bold"
-            android:textColor="#ff8effff"
-            android:id="@+id/tv_server_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" />
-        <TextView
-            android:textSize="14.0dip"
-            android:textColor="#ff8effff"
-            android:id="@+id/tv_server_php"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" />
-        <TextView
-            android:textSize="14.0dip"
-            android:textColor="#ff8effff"
-            android:id="@+id/tv_server_java"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" />
-    </LinearLayout>
-    <LinearLayout
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:id="@+id/ll_third_login"
@@ -64,7 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="35.0dip"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp">
         <ImageView
             android:id="@+id/iv_wechat"
             android:layout_width="wrap_content"
