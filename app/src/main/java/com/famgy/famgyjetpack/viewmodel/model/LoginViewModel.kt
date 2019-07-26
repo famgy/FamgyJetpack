@@ -37,7 +37,7 @@ class LoginViewModel : ViewModel() {
     }
 
     private fun passwordIsValidForUsername(): Boolean {
-        if ("famgy".equals(mAccount) && "abcd".equals(mPassword)) {
+        if ("18600576464".equals(mAccount) && "abcd".equals(mPassword)) {
             return true
         }
 

@@ -8,109 +8,182 @@
         <variable name="model" type="com.famgy.famgyjetpack.viewmodel.model.LoginViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.fragment.MainFragment">
+    <RelativeLayout
+        android:background="@drawable/bg_star"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <com.famgy.famgyjetpack.ui.widget.CoolBackgroundView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            app:sbv_drawable="@drawable/bg_login"
+            app:sbv_scrollX="0dip"
+            app:sbv_scrollY="0dip" />
+        <View android:background="#45000000"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
 
         <ImageView
-            android:id="@+id/iv_bg"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toLeftOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.45"
-            android:src="@drawable/bg_welcome"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40.0dip"
+            android:src="@mipmap/splash_1"
+            android:layout_centerHorizontal="true" />
 
-        <EditText
-            android:id="@+id/et_account"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/iv_bg"
-            app:layout_constraintBottom_toTopOf="@+id/et_pwd"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintVertical_bias="0.3"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.1"
-            app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.8"
-            android:hint="account"
-            android:onTextChanged="@{(text, start, before, count)->model.onAccountChanged(text)}"
-            android:drawableStart="@drawable/ic_account"
-            android:drawablePadding="10dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:background="@drawable/shape_table_item_edit"
-            />
+        <LinearLayout
+            android:layout_below="@+id/iv_logo"
+            android:orientation="vertical"
+            android:layout_marginTop="40.0dip"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-        <EditText
-            android:id="@+id/et_pwd"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/et_account"
-            app:layout_constraintBottom_toTopOf="@+id/btn_register"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:hint="password"
-            android:onTextChanged="@{(text, start, before, count)->model.onPasswordChanged(text)}"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.1"
-            app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.8"
-            android:drawableStart="@drawable/ic_pwd"
-            android:drawablePadding="10dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:background="@drawable/shape_table_item_edit"
-            />
+            <RelativeLayout
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="40.0dip"
+                android:paddingRight="40.0dip"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip">
+                <TextView
+                    android:textSize="13.0sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/color_white"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45.0dip"
+                    android:text="+86"
+                    android:drawablePadding="4.0dip"/>
+                <EditText
+                    android:textSize="13.0sp"
+                    android:textColor="@color/color_white"
+                    android:textColorHint="@color/color_gray"
+                    android:gravity="center_vertical"
+                    android:id="@+id/et_username"
+                    android:background="@null"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:layout_marginLeft="64.0dip"
+                    android:hint="@string/login_phone_input_number_hint"
+                    android:onTextChanged="@{(text, start, before, count)->model.onAccountChanged(text)}"
+                    android:maxLength="11"
+                    android:inputType="phone"/>
+                <View
+                    android:background="@color/color_gray"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dip"
+                    android:layout_alignParentBottom="true" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:gravity="center_vertical"
+                android:paddingLeft="40.0dip"
+                android:paddingRight="40.0dip"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:layout_marginTop="35.0dip">
+                <TextView
+                    android:textSize="13.0sp"
+                    android:textColor="@color/color_white"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:id="@+id/password_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45.0dip"
+                    android:text="密码" />
+                <EditText
+                    android:id="@+id/et_password"
+                    android:textSize="13.0sp"
+                    android:textColor="@color/color_white"
+                    android:textColorHint="@color/color_gray"
+                    android:maxLength="16"
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:layout_marginLeft="64.0dip"
+                    android:hint="@string/login_phone_input_password_hint"
+                    android:onTextChanged="@{(text, start, before, count)->model.onPasswordChanged(text)}"
+                    android:inputType="textPassword" />
+                <ImageButton
+                    android:id="@+id/ib_password_change"
+                    android:background="@null"
+                    android:paddingLeft="25.0dip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45.0dip"
+                    android:src="@drawable/ic_password_hide"
+                    android:layout_alignParentRight="true" />
+                <View
+                    android:background="@color/color_gray"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dip"
+                    android:layout_alignParentBottom="true" />
+            </RelativeLayout>
+            <Button
+                android:id="@+id/btn_sure"
+                android:textSize="17.0sp"
+                android:textColor="@color/color_white"
+                android:background="@drawable/button_custom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40.0dip"
+                android:layout_marginTop="16.0dip"
+                android:layout_marginRight="40.0dip"
+                android:text="@string/login_sure"
+                android:onClick="@{() -> model.authenticate()}" />
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="13.0sp"
+                    android:textColor="@color/color_gray"
+                    android:id="@+id/tv_findpsd"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20.0dip"
+                    android:layout_marginRight="40.0dip"
+                    android:text="忘记密码"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/et_pwd"
-            app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.8"
-            app:layout_constraintBottom_toTopOf="@+id/btn_register"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:text="Login"
-            android:onClick="@{() -> model.authenticate()}"
-            android:textSize="@dimen/txt_big_size"
-            android:background="@drawable/shape_main_recycle_item_primary"/>
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:id="@+id/ll_third_login"
+            android:paddingBottom="37.0dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35.0dip"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp">
+            <ImageView
+                android:id="@+id/iv_wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_login_wechat" />
+            <ImageView
+                android:id="@+id/iv_qq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25.0dip"
+                android:src="@mipmap/icon_login_qq" />
+            <View
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0" />
+            <TextView
+                android:id="@+id/tv_register"
+                android:textSize="13.0sp"
+                android:textColor="#ffc7c7d7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40.0dip"
+                android:text="注册" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/btn_login"
-            app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.8"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.1"
-            android:text="Register"
-            android:textSize="@dimen/txt_big_size"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@drawable/shape_main_recycle_item_primary"/>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </RelativeLayout>
 
 </layout>
 

@@ -6,6 +6,7 @@ import android.graphics.drawable.AnimationDrawable
 import kotlinx.android.synthetic.main.activity_splash.*
 import android.animation.ValueAnimator
 import android.animation.ValueAnimator.AnimatorUpdateListener
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Handler
 import com.famgy.famgyjetpack.R
@@ -38,6 +39,11 @@ class SplashActivity : AppCompatActivity() {
         valueAnimator.addUpdateListener(AnimatorUpdateListener { valueAnimator ->
             val value = (valueAnimator.animatedValue as Int).toInt()
             splash_text?.getDrawable()?.setAlpha(value)
+            if (value == 255) {
+                var intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         })
     }
 

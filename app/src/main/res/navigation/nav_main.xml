@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_main_to_login"
-            app:destination="@id/login_fragment" />
+            app:destination="@id/login_fragment"
+            app:popUpTo="@+id/login_fragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -22,18 +24,20 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_login_to_registration"
-            app:enterAnim="@anim/slide_in_right"
+            app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
             app:destination="@id/registration_graph" />
         <action
             android:id="@+id/action_login_to_main"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:destination="@id/main_fragment" />
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:destination="@id/main_fragment"
+            app:popUpTo="@+id/main_fragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <navigation
@@ -47,9 +51,9 @@
             tools:layout="@layout/fragment_profile" >
             <action
                 android:id="@+id/action_profile_to_credentials"
-                app:enterAnim="@anim/slide_in_right"
+                app:enterAnim="@anim/fade_in"
                 app:exitAnim="@anim/slide_out_left"
-                app:popEnterAnim="@anim/slide_in_left"
+                app:popEnterAnim="@anim/fade_in"
                 app:popExitAnim="@anim/slide_out_right"
                 app:destination="@id/credentialsFragment" />
         </fragment>
@@ -58,7 +62,18 @@
             android:id="@+id/credentialsFragment"
             android:name="com.famgy.famgyjetpack.ui.fragment.CredentialsFragment"
             android:label="fragment_credentials"
-            tools:layout="@layout/fragment_credentials" />
+            tools:layout="@layout/fragment_credentials">
+            <action
+                android:id="@+id/action_credentials_to_login"
+                app:enterAnim="@anim/fade_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out"
+                app:destination="@id/login_fragment"
+                app:popUpTo="@+id/login_fragment"
+                app:popUpToInclusive="true" />
+        </fragment>
+
     </navigation>
 
 </navigation>
