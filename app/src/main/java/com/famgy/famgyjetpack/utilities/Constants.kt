@@ -1,9 +1,9 @@
-package com.famgy.famgyjetpack.util
+package com.famgy.famgyjetpack.utilities
 
 /**
  * Constants used throughout the app.
  */
-const val DATABASE_NAME = "test-db"
+const val DATABASE_NAME = "sunflower-db"
 const val PLANT_DATA_FILENAME = "plants.json"
 
 const val TABLE_PREFS = "jetpack"

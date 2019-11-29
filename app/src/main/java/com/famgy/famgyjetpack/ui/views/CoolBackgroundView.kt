@@ -1,15 +1,11 @@
-package com.famgy.famgyjetpack.ui.widget
+package com.famgy.famgyjetpack.ui.views
 
 import android.content.Context
-import android.content.res.Resources
 import android.content.res.TypedArray
 import android.graphics.*
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.ShapeDrawable
 import android.util.AttributeSet
 import android.view.View
-import androidx.core.content.res.ResourcesCompat
 import com.famgy.famgyjetpack.R
 
 class CoolBackgroundView : View {
@@ -37,7 +33,7 @@ class CoolBackgroundView : View {
         try {
             e = typedArray.getDimensionPixelSize(R.styleable.ScrollingBackgroundView_sbv_scrollX, 0)
             f = typedArray.getDimensionPixelSize(R.styleable.ScrollingBackgroundView_sbv_scrollY, 0)
-            drawable = typedArray.getDrawable(R.styleable.ScrollingBackgroundView_sbv_drawable)
+            drawable = typedArray.getDrawable(R.styleable.ScrollingBackgroundView_sbv_drawable)!!
 
             setDrawable();
         } finally {

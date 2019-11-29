@@ -1,7 +1,5 @@
-package com.famgy.famgyjetpack.viewmodel.model
+package com.famgy.famgyjetpack.viewmodels.model
 
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -41,7 +39,8 @@ class LoginViewModel : ViewModel() {
             return true
         }
 
-        return false
+        return true
+//        return false
     }
 
 

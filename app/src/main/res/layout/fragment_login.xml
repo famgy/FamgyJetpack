@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="model" type="com.famgy.famgyjetpack.viewmodel.model.LoginViewModel" />
+        <variable name="model" type="com.famgy.famgyjetpack.viewmodels.model.LoginViewModel" />
     </data>
 
     <RelativeLayout
@@ -13,7 +13,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-        <com.famgy.famgyjetpack.ui.widget.CoolBackgroundView
+        <com.famgy.famgyjetpack.ui.views.CoolBackgroundView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             app:sbv_drawable="@drawable/bg_login"
@@ -148,16 +148,15 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_third_login"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:id="@+id/ll_third_login"
             android:paddingBottom="37.0dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35.0dip"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="30dp">
+            android:layout_alignParentBottom="true">
             <ImageView
                 android:id="@+id/iv_wechat"
                 android:layout_width="wrap_content"

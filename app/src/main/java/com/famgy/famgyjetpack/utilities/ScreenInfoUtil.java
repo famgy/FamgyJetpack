@@ -1,4 +1,4 @@
-package com.famgy.famgyjetpack.util;
+package com.famgy.famgyjetpack.utilities;
 
 import android.content.Context;
 import android.content.res.Resources;

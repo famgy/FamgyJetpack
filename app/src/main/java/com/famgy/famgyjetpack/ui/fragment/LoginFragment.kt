@@ -9,20 +9,24 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.famgy.famgyjetpack.R
 import com.famgy.famgyjetpack.databinding.FragmentLoginBinding
-import com.famgy.famgyjetpack.util.Exit_TIME
-import com.famgy.famgyjetpack.viewmodel.model.LoginViewModel
-import com.famgy.famgyjetpack.viewmodel.model.LoginViewModel.AuthenticationState.AUTHENTICATED
-import com.famgy.famgyjetpack.viewmodel.model.LoginViewModel.AuthenticationState.INVALID_AUTHENTICATION
+import com.famgy.famgyjetpack.utilities.Exit_TIME
+import com.famgy.famgyjetpack.utilities.ScreenInfoUtil
+import com.famgy.famgyjetpack.viewmodels.model.LoginViewModel
+import com.famgy.famgyjetpack.viewmodels.model.LoginViewModel.AuthenticationState.AUTHENTICATED
+import com.famgy.famgyjetpack.viewmodels.model.LoginViewModel.AuthenticationState.INVALID_AUTHENTICATION
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.view.*
 
 
 class LoginFragment : Fragment() {
@@ -57,6 +61,15 @@ class LoginFragment : Fragment() {
         //半透明
         //window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
+
+
+        var layoutParams: RelativeLayout.LayoutParams = ll_third_login.getLayoutParams() as RelativeLayout.LayoutParams;
+        layoutParams.bottomMargin = ScreenInfoUtil.getNavigationBarHeight(context);
+        ll_third_login.setLayoutParams(layoutParams);
+
+
+        ll_third_login.
 
 
         tv_register.setOnClickListener {

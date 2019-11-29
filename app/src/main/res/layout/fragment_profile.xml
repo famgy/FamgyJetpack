@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="model" type="com.famgy.famgyjetpack.viewmodel.model.LoginViewModel" />
+        <variable name="model" type="com.famgy.famgyjetpack.viewmodels.model.LoginViewModel" />
     </data>
 
     <RelativeLayout

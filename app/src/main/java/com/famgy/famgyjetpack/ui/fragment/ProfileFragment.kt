@@ -3,7 +3,6 @@ package com.famgy.famgyjetpack.ui.fragment
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,15 +12,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.famgy.famgyjetpack.databinding.FragmentProfileBinding
-import com.famgy.famgyjetpack.viewmodel.model.LoginViewModel
-import com.famgy.famgyjetpack.viewmodel.model.LoginViewModel.AuthenticationState.AUTHENTICATED
-import com.famgy.famgyjetpack.viewmodel.model.LoginViewModel.AuthenticationState.INVALID_AUTHENTICATION
+import com.famgy.famgyjetpack.viewmodels.model.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 
 class ProfileFragment : Fragment() {
-
-    private val viewModel: LoginViewModel by activityViewModels()
 
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
