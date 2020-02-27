@@ -5,6 +5,7 @@ package com.famgy.famgyjetpack.utilities
  */
 const val DATABASE_NAME = "sunflower-db"
 const val PLANT_DATA_FILENAME = "plants.json"
+const val SONG_DATA_FILENAME = "songs.json"
 
 const val TABLE_PREFS = "jetpack"
 const val SP_LOGINFO_INFO = "login_info"

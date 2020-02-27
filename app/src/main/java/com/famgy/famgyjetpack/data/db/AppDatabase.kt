@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.famgy.famgyjetpack.data
+package com.famgy.famgyjetpack.data.db
 
 import android.content.Context
 import androidx.room.Database
@@ -24,10 +24,13 @@ import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import com.famgy.famgyjetpack.data.Converters
+import com.famgy.famgyjetpack.data.GardenPlanting
 import com.famgy.famgyjetpack.data.db.dao.GardenPlantingDao
 import com.famgy.famgyjetpack.data.db.dao.PlantDao
 import com.famgy.famgyjetpack.data.db.dao.SongDao
 import com.famgy.famgyjetpack.data.db.tb.Plant
+import com.famgy.famgyjetpack.data.db.tb.Song
 import com.famgy.famgyjetpack.utilities.DATABASE_NAME
 import com.famgy.famgyjetpack.workers.SeedDatabaseWorker
 
@@ -35,7 +38,7 @@ import com.famgy.famgyjetpack.workers.SeedDatabaseWorker
 /**
  * The Room database for this app
  */
-@Database(entities = [GardenPlanting::class, Plant::class], version = 1, exportSchema = false)
+@Database(entities = [GardenPlanting::class, Plant::class, Song::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun gardenPlantingDao(): GardenPlantingDao
@@ -48,8 +51,12 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile private var instance: AppDatabase? = null
 
         fun getInstance(context: Context): AppDatabase {
-            return instance ?: synchronized(this) {
-                instance ?: buildDatabase(context).also { instance = it }
+            return instance
+                ?: synchronized(this) {
+                instance
+                    ?: buildDatabase(
+                        context
+                    ).also { instance = it }
             }
         }
 

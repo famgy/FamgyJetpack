@@ -6,7 +6,7 @@ class SongRepository private constructor(private val songDao: SongDao){
 
     fun getAllSongs() = songDao.getAllSongs()
 
-    fun getSong(songId: String) = songDao.getPlant(songId)
+    fun getSong(songId: String) = songDao.getSong(songId)
 
     companion object {
         // For Singleton instantiation

@@ -17,6 +17,7 @@
 package com.famgy.famgyjetpack.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -70,6 +71,7 @@ class PlantListFragment : Fragment() {
 
     private fun subscribeUi(adapter: PlantAdapter) {
         viewModel.plants.observe(viewLifecycleOwner) { plants ->
+            Log.e("===TEST===", "plants : " + plants.toString())
             adapter.submitList(plants)
         }
     }

@@ -23,7 +23,8 @@ data class Song(
     @PrimaryKey @ColumnInfo(name = "id") val songId: String,
     val name: String,
     val artist: String,
-    val album: String
+    val album: String,
+    val imageUrl: String = ""
 ) {
     override fun toString() = name
 }

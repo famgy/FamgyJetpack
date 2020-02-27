@@ -2,7 +2,10 @@ package com.famgy.famgyjetpack.data.db.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.famgy.famgyjetpack.data.db.tb.Plant
 import com.famgy.famgyjetpack.data.db.tb.Song
 
 @Dao
@@ -12,5 +15,8 @@ interface SongDao {
     fun getAllSongs(): LiveData<List<Song>>
 
     @Query("SELECT * FROM song WHERE id = :songId")
-    fun getPlant(songId: String): LiveData<Song>
+    fun getSong(songId: String): LiveData<Song>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(songs: List<Song>)
 }

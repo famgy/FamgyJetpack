@@ -19,6 +19,7 @@ package com.famgy.famgyjetpack.adapters
 import android.text.method.LinkMovementMethod
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.text.HtmlCompat
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
 import androidx.databinding.BindingAdapter
@@ -34,6 +35,15 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
                 .load(imageUrl)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(view)
+    }
+}
+
+@BindingAdapter("appImageFromUrl")
+fun bindImageFromUrl(view: AppCompatImageView, imageUrl: String?) {
+    if (!imageUrl.isNullOrEmpty()) {
+        Glide.with(view.context)
+            .load(imageUrl)
+            .into(view)
     }
 }
 

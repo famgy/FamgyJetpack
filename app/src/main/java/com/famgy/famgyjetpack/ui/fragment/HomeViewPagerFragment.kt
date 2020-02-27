@@ -42,6 +42,7 @@ class HomeViewPagerFragment : Fragment() {
 
         viewPager.adapter = HomeViewPagerAdapter(this)
 
+        //Traversing the viewPager
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.setIcon(getTabIcon(position))
             tab.text = getTabTitle(position)
@@ -83,7 +84,7 @@ class HomeViewPagerFragment : Fragment() {
         return when (position) {
             MY_GARDEN_PAGE_INDEX -> R.drawable.garden_tab_selector
             PLANT_LIST_PAGE_INDEX -> R.drawable.plant_list_tab_selector
-            SONG_LIST_PAGE_INDEX -> R.drawable.plant_list_tab_selector
+            SONG_LIST_PAGE_INDEX -> R.drawable.song_list_tab_selector
             else -> throw IndexOutOfBoundsException()
         }
     }

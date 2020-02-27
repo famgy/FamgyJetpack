@@ -20,9 +20,11 @@ import android.content.Context
 import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.famgy.famgyjetpack.data.AppDatabase
+import com.famgy.famgyjetpack.data.db.AppDatabase
 import com.famgy.famgyjetpack.data.db.tb.Plant
+import com.famgy.famgyjetpack.data.db.tb.Song
 import com.famgy.famgyjetpack.utilities.PLANT_DATA_FILENAME
+import com.famgy.famgyjetpack.utilities.SONG_DATA_FILENAME
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
@@ -33,18 +35,27 @@ class SeedDatabaseWorker(
     workerParams: WorkerParameters
 ) : CoroutineWorker(context, workerParams) {
     override suspend fun doWork(): Result = coroutineScope {
+        val database = AppDatabase.getInstance(applicationContext)
+
         try {
             applicationContext.assets.open(PLANT_DATA_FILENAME).use { inputStream ->
                 JsonReader(inputStream.reader()).use { jsonReader ->
+
                     val plantType = object : TypeToken<List<Plant>>() {}.type
                     val plantList: List<Plant> = Gson().fromJson(jsonReader, plantType)
-
-                    val database = AppDatabase.getInstance(applicationContext)
                     database.plantDao().insertAll(plantList)
-
-                    Result.success()
                 }
             }
+
+            applicationContext.assets.open(SONG_DATA_FILENAME).use { inputStream ->
+                JsonReader(inputStream.reader()).use { jsonReader ->
+                    val songType = object : TypeToken<List<Song>>() {}.type
+                    val songList: List<Song> = Gson().fromJson(jsonReader, songType)
+                    database.songDao().insertAll(songList)
+                }
+            }
+
+            Result.success()
         } catch (ex: Exception) {
             Log.e(TAG, "Error seeding database", ex)
             Result.failure()

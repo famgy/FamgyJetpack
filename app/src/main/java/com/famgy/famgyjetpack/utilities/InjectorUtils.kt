@@ -17,7 +17,7 @@
 package com.famgy.famgyjetpack.utilities
 
 import android.content.Context
-import com.famgy.famgyjetpack.data.AppDatabase
+import com.famgy.famgyjetpack.data.db.AppDatabase
 import com.famgy.famgyjetpack.data.repository.GardenPlantingRepository
 import com.famgy.famgyjetpack.data.repository.PlantRepository
 import com.famgy.famgyjetpack.data.repository.SongRepository

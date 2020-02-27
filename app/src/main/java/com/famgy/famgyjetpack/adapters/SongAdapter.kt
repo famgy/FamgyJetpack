@@ -6,29 +6,29 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.famgy.famgyjetpack.data.db.tb.Song
-import com.famgy.famgyjetpack.databinding.ListItemMusicBinding
+import com.famgy.famgyjetpack.databinding.ListItemSongBinding
 
 class SongAdapter : ListAdapter<Song, RecyclerView.ViewHolder>(SongDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return MusicViewHolder(ListItemMusicBinding.inflate(
+        return SongViewHolder(ListItemSongBinding.inflate(
             LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val music = getItem(position)
-        (holder as MusicViewHolder).bind(music)
+        val song = getItem(position)
+        (holder as SongViewHolder).bind(song)
     }
 
-    class MusicViewHolder(
-        private val binding: ListItemMusicBinding
+    class SongViewHolder(
+        private val binding: ListItemSongBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
         }
 
         fun bind(item: Song) {
             binding.apply {
-                music = item
+                song = item
                 executePendingBindings()
             }
         }
